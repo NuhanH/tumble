@@ -49,7 +49,7 @@ export default function Game() {
           >
             ← Home
           </button>
-          <h1 className="text-2xl font-bold text-white">🎮 Balance</h1>
+          <h1 className="text-2xl font-bold text-white">🎮 TUMBLE</h1>
           <div className="w-24"></div> {/* Spacer */}
         </div>
       </header>

@@ -9,11 +9,11 @@ export default function Landing() {
       <div className="max-w-2xl w-full text-center fade-in">
         {/* Logo/Title */}
         <div className="mb-8">
-          <h1 className="text-6xl font-bold text-white mb-4">
-            🎮 Balance
+          <h1 className="text-6xl font-bold text-white mb-2">
+            🎮 TUMBLE
           </h1>
           <p className="text-xl text-white/90">
-            Platform Balance Game
+            Get Ready to TUMBLE
           </p>
         </div>
 

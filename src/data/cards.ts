@@ -17,80 +17,131 @@ export interface CardDeck {
   remaining: number;
 }
 
-// 9 farklı şekil kartı
-// Her karttan 3'er tane
+// Shape (block) cards - target total: 32 (current defined total by counts below: 30)
+// If you'd like exactly 32, tell me which 2 more to add (e.g., +2 Soil or +2 Pebble)
 const shapeCards: Card[] = [
+  // Tornado (2 straight, 2 reverse) => 4
   {
     id: 1,
     type: 'shape',
-    name: 'Grass',
-    image: '/grass.png',
-    icon: '🌱',
-    count: 4,
+    name: 'Tornado (Straight)',
+    image: '/tornado-duz.png',
+    icon: '',
+    count: 2,
   },
   {
     id: 2,
     type: 'shape',
-    name: 'Rainbow',
-    image: '/rainbow.png',
-    icon: '🌈',
-    count: 3,
+    name: 'Tornado (Reverse)',
+    image: '/tornado-ters.png',
+    icon: '',
+    count: 2,
   },
+
+  // Slope (2 straight, 1 reverse) => 3
   {
     id: 3,
     type: 'shape',
-    name: 'Rock',
-    image: '/rock.png',
-    icon: '🪨',
-    count: 3,
+    name: 'Slope (Straight)',
+    image: '/slope-duz.png',
+    icon: '',
+    count: 2,
   },
   {
     id: 4,
     type: 'shape',
-    name: 'Seed',
-    image: '/seed.png',
-    icon: '🌾',
-    count: 4,
+    name: 'Slope (Reverse)',
+    image: '/slope-ters.png',
+    icon: '',
+    count: 1,
   },
+
+  // Soil => 4
   {
     id: 5,
     type: 'shape',
     name: 'Soil',
     image: '/soil.png',
-    icon: '�',
-    count: 3,
+    icon: '',
+    count: 4,
   },
+
+  // Rainbow (1 straight, 1 reverse) => 2
   {
     id: 6,
     type: 'shape',
-    name: 'Sun',
-    image: '/sun.png',
-    icon: '☀️',
-    count: 2,
+    name: 'Rainbow (Straight)',
+    image: '/rainbow.png',
+    icon: '',
+    count: 1,
   },
   {
     id: 7,
     type: 'shape',
-    name: 'Tree',
-    image: '/tree.png',
-    icon: '🌳',
-    count: 4,
+    name: 'Rainbow (Reverse)',
+    image: '/rainbow-ters.png',
+    icon: '',
+    count: 1,
   },
+
+  // Tree => 3
   {
     id: 8,
     type: 'shape',
-    name: 'Wave',
-    image: '/wave.png',
-    icon: '🌊',
+    name: 'Tree',
+    image: '/tree.png',
+    icon: '',
     count: 3,
   },
+
+  // Rock => 2
   {
     id: 9,
     type: 'shape',
-    name: 'Wind',
-    image: '/wind.png',
-    icon: '�',
+    name: 'Rock',
+    image: '/rock.png',
+    icon: '',
+    count: 2,
+  },
+
+  // Pebble => 3
+  {
+    id: 10,
+    type: 'shape',
+    name: 'Pebble',
+    image: '/pebble.png',
+    icon: '',
     count: 3,
+  },
+
+  // Sun => 4
+  {
+    id: 11,
+    type: 'shape',
+    name: 'Sun',
+    image: '/sun.png',
+    icon: '',
+    count: 2,
+  },
+
+  // Ice => 5
+  {
+    id: 12,
+    type: 'shape',
+    name: 'Ice',
+    image: '/ice.png',
+    icon: '',
+    count: 5,
+  },
+
+  // Grass => 4 (added to reach total 32 blocks)
+  {
+    id: 13,
+    type: 'shape',
+    name: 'Grass',
+    image: '/grass.png',
+    icon: '',
+    count: 4,
   },
 ];
 
@@ -101,23 +152,23 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Switch Hands',
     description: 'Switch your platform to the other hand (right → left or left → right)',
-    icon: '�',
-    count: 2,
+    icon: '',
+    count: 3, // updated to 3
   },
   {
     id: 102,
     type: 'action',
     name: 'Reach Forward',
     description: 'Extend your hand forward while holding the platform',
-    icon: '👉',
-    count: 1,
+    icon: '',
+    count: 2, // updated to 2
   },
   {
     id: 103,
     type: 'action',
     name: 'Stand on One Leg',
     description: 'Stand on one leg for 10 seconds',
-    icon: '�',
+    icon: '🦵',
     count: 2,
   },
   {
@@ -125,7 +176,7 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Circle Around Players',
     description: 'Walk around all the players once',
-    icon: '�',
+    icon: '🔄',
     count: 1,
   },
   {
@@ -150,14 +201,14 @@ const actionCards: Card[] = [
     name: 'Skip Next Turn',
     description: "Don't place any block on your next turn",
     icon: '⏭️',
-    count: 1,
+    count: 2, // increased to reach total of 18 action cards
   },
   {
     id: 108,
     type: 'action',
     name: 'Steal a Block',
     description: "Take the top block from another player's platform and place it on yours",
-    icon: '🎯',
+    icon: '',
     count: 1,
   },
   {
@@ -165,7 +216,7 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Double Block',
     description: 'Place 2 blocks on your next turn',
-    icon: '➕',
+    icon: '',
     count: 1,
   },
 ];
