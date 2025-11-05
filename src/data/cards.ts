@@ -17,132 +17,40 @@ export interface CardDeck {
   remaining: number;
 }
 
-// Shape (block) cards - target total: 32 (current defined total by counts below: 30)
-// If you'd like exactly 32, tell me which 2 more to add (e.g., +2 Soil or +2 Pebble)
+// Shape (block) cards - total 32
 const shapeCards: Card[] = [
-  // Tornado (2 straight, 2 reverse) => 4
-  {
-    id: 1,
-    type: 'shape',
-    name: 'Tornado (Straight)',
-    image: '/tornado-duz.png',
-    icon: '',
-    count: 2,
-  },
-  {
-    id: 2,
-    type: 'shape',
-    name: 'Tornado (Reverse)',
-    image: '/tornado-ters.png',
-    icon: '',
-    count: 2,
-  },
+  // Tornado => 4 (2 straight, 2 reverse)
+  { id: 1, type: 'shape', name: 'Tornado', image: '/tornado-duz.png', count: 2 },
+  { id: 2, type: 'shape', name: 'Tornado', image: '/tornado-ters.png', count: 2 },
 
-  // Slope (2 straight, 1 reverse) => 3
-  {
-    id: 3,
-    type: 'shape',
-    name: 'Slope (Straight)',
-    image: '/slope-duz.png',
-    icon: '',
-    count: 2,
-  },
-  {
-    id: 4,
-    type: 'shape',
-    name: 'Slope (Reverse)',
-    image: '/slope-ters.png',
-    icon: '',
-    count: 1,
-  },
+  // Slope => 3 (2 straight, 1 reverse)
+  { id: 3, type: 'shape', name: 'Slope', image: '/slope-duz.png', count: 2 },
+  { id: 4, type: 'shape', name: 'Slope', image: '/slope-ters.png', count: 1 },
 
   // Soil => 4
-  {
-    id: 5,
-    type: 'shape',
-    name: 'Soil',
-    image: '/soil.png',
-    icon: '',
-    count: 4,
-  },
+  { id: 5, type: 'shape', name: 'Soil', image: '/soil.png', count: 4 },
 
-  // Rainbow (1 straight, 1 reverse) => 2
-  {
-    id: 6,
-    type: 'shape',
-    name: 'Rainbow (Straight)',
-    image: '/rainbow.png',
-    icon: '',
-    count: 1,
-  },
-  {
-    id: 7,
-    type: 'shape',
-    name: 'Rainbow (Reverse)',
-    image: '/rainbow-ters.png',
-    icon: '',
-    count: 1,
-  },
+  // Rainbow => 2 (1 straight, 1 reverse)
+  { id: 6, type: 'shape', name: 'Rainbow', image: '/rainbow.png', count: 1 },
+  { id: 7, type: 'shape', name: 'Rainbow', image: '/rainbow-ters.png', count: 1 },
 
   // Tree => 3
-  {
-    id: 8,
-    type: 'shape',
-    name: 'Tree',
-    image: '/tree.png',
-    icon: '',
-    count: 3,
-  },
+  { id: 8, type: 'shape', name: 'Tree', image: '/tree.png', count: 3 },
 
   // Rock => 2
-  {
-    id: 9,
-    type: 'shape',
-    name: 'Rock',
-    image: '/rock.png',
-    icon: '',
-    count: 2,
-  },
+  { id: 9, type: 'shape', name: 'Rock', image: '/rock.png', count: 2 },
 
   // Pebble => 3
-  {
-    id: 10,
-    type: 'shape',
-    name: 'Pebble',
-    image: '/pebble.png',
-    icon: '',
-    count: 3,
-  },
+  { id: 10, type: 'shape', name: 'Pebble', image: '/pebble.png', count: 3 },
 
-  // Sun => 4
-  {
-    id: 11,
-    type: 'shape',
-    name: 'Sun',
-    image: '/sun.png',
-    icon: '',
-    count: 2,
-  },
+  // Sun => 2
+  { id: 11, type: 'shape', name: 'Sun', image: '/sun.png', count: 2 },
 
   // Ice => 5
-  {
-    id: 12,
-    type: 'shape',
-    name: 'Ice',
-    image: '/ice.png',
-    icon: '',
-    count: 5,
-  },
+  { id: 12, type: 'shape', name: 'Ice', image: '/ice.png', count: 5 },
 
-  // Grass => 4 (added to reach total 32 blocks)
-  {
-    id: 13,
-    type: 'shape',
-    name: 'Grass',
-    image: '/grass.png',
-    icon: '',
-    count: 4,
-  },
+  // Grass => 4
+  { id: 13, type: 'shape', name: 'Grass', image: '/grass.png', count: 4 },
 ];
 
 // Action cards
@@ -152,15 +60,15 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Switch Hands',
     description: 'Switch your platform to the other hand (right → left or left → right)',
-    icon: '',
+    icon: '🤝',
     count: 3, // updated to 3
   },
   {
     id: 102,
     type: 'action',
-    name: 'Reach Forward',
-    description: 'Extend your hand forward while holding the platform',
-    icon: '',
+    name: 'Reach Forward (2 turns)',
+    description: 'Keep your arm extended forward for the next 2 turns while holding the platform',
+    icon: '<i class="fa-solid fa-person-carry-empty"></i>',
     count: 2, // updated to 2
   },
   {
@@ -192,7 +100,7 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Stand Up / Sit Down',
     description: 'Stand up (if sitting) or sit down (if standing)',
-    icon: '🧍',
+    icon: '🧍/🪑',
     count: 3,
   },
   {
@@ -208,7 +116,7 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Steal a Block',
     description: "Take the top block from another player's platform and place it on yours",
-    icon: '',
+    icon: '🎯',
     count: 1,
   },
   {
@@ -216,7 +124,7 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Double Block',
     description: 'Place 2 blocks on your next turn',
-    icon: '',
+    icon: '➕',
     count: 1,
   },
 ];

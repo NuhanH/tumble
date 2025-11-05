@@ -9,6 +9,9 @@ export default function Game() {
   const [currentCard, setCurrentCard] = useState<Card | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
+  const [playerCount, setPlayerCount] = useState<number | null>(null);
+  const [currentPlayer, setCurrentPlayer] = useState<number | null>(null);
+  const [startingPlayer, setStartingPlayer] = useState<number | null>(null);
 
   const handleDrawCard = () => {
     if (deck.remaining === 0) {
@@ -29,6 +32,11 @@ export default function Game() {
       if (newDeck.remaining === 0) {
         setTimeout(() => setGameFinished(true), 2000);
       }
+
+      // Advance to next player
+      if (playerCount && currentPlayer) {
+        setCurrentPlayer(((currentPlayer % playerCount) || 0) + 1);
+      }
     }, 300);
   };
 
@@ -36,6 +44,16 @@ export default function Game() {
     setDeck(initializeDeck());
     setCurrentCard(null);
     setGameFinished(false);
+    setPlayerCount(null);
+    setCurrentPlayer(null);
+    setStartingPlayer(null);
+  };
+
+  const handleSelectPlayers = (count: number) => {
+    setPlayerCount(count);
+    const start = Math.floor(Math.random() * count) + 1;
+    setCurrentPlayer(start);
+    setStartingPlayer(start);
   };
 
   return (
@@ -57,6 +75,37 @@ export default function Game() {
       {/* Ana Oyun Alanı */}
       <main className="flex-1 flex flex-col items-center justify-center p-6">
         <div className="max-w-2xl w-full space-y-8">
+          {/* Player selection overlay */}
+          {playerCount === null && !gameFinished && (
+            <div className="text-center fade-in">
+              <div className="bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-10">
+                <h2 className="text-3xl font-bold text-gray-800 mb-6">Select Players</h2>
+                <p className="text-gray-600 mb-6">How many players will play?</p>
+                <div className="flex justify-center gap-4">
+                  {[2,3,4].map((n) => (
+                    <button
+                      key={n}
+                      onClick={() => handleSelectPlayers(n)}
+                      className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-xl py-3 px-6 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                    >
+                      {n} Players
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Current player banner */}
+          {playerCount !== null && currentPlayer !== null && (
+            <div className="text-center">
+              <div className="inline-block bg-white/20 backdrop-blur rounded-full px-6 py-2">
+                <span className="text-white font-semibold">
+                  🎯 Current Player: Player {currentPlayer}{startingPlayer === currentPlayer ? ' (starts)' : ''}
+                </span>
+              </div>
+            </div>
+          )}
           {/* Oyun Bitti Ekranı */}
           {gameFinished ? (
             <div className="text-center fade-in">
@@ -111,11 +160,11 @@ export default function Game() {
               <div className="text-center">
                 <button
                   onClick={handleDrawCard}
-                  disabled={isDrawing || deck.remaining === 0}
+                  disabled={isDrawing || deck.remaining === 0 || playerCount === null}
                   className={`
                     bg-white text-purple-600 font-bold text-xl py-6 px-12 rounded-full 
                     shadow-2xl transform transition-all duration-300
-                    ${isDrawing || deck.remaining === 0
+                    ${isDrawing || deck.remaining === 0 || playerCount === null
                       ? 'opacity-50 cursor-not-allowed scale-95' 
                       : 'hover:scale-105 hover:shadow-3xl pulse-animation'
                     }
