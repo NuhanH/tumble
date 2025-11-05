@@ -10,7 +10,6 @@ export default function Game() {
   const [isDrawing, setIsDrawing] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
   const [playerCount, setPlayerCount] = useState<number | null>(null);
-  const [currentPlayer, setCurrentPlayer] = useState<number | null>(null);
   const [startingPlayer, setStartingPlayer] = useState<number | null>(null);
 
   const handleDrawCard = () => {
@@ -32,11 +31,6 @@ export default function Game() {
       if (newDeck.remaining === 0) {
         setTimeout(() => setGameFinished(true), 2000);
       }
-
-      // Advance to next player
-      if (playerCount && currentPlayer) {
-        setCurrentPlayer(((currentPlayer % playerCount) || 0) + 1);
-      }
     }, 300);
   };
 
@@ -45,14 +39,12 @@ export default function Game() {
     setCurrentCard(null);
     setGameFinished(false);
     setPlayerCount(null);
-    setCurrentPlayer(null);
     setStartingPlayer(null);
   };
 
   const handleSelectPlayers = (count: number) => {
     setPlayerCount(count);
     const start = Math.floor(Math.random() * count) + 1;
-    setCurrentPlayer(start);
     setStartingPlayer(start);
   };
 
@@ -96,12 +88,12 @@ export default function Game() {
             </div>
           )}
 
-          {/* Current player banner */}
-          {playerCount !== null && currentPlayer !== null && (
+          {/* Starting player note (shown before first draw) */}
+          {playerCount !== null && startingPlayer !== null && !currentCard && !gameFinished && (
             <div className="text-center">
               <div className="inline-block bg-white/20 backdrop-blur rounded-full px-6 py-2">
                 <span className="text-white font-semibold">
-                  🎯 Current Player: Player {currentPlayer}{startingPlayer === currentPlayer ? ' (starts)' : ''}
+                  🚀 Starting Player: Player {startingPlayer}
                 </span>
               </div>
             </div>

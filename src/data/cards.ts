@@ -100,7 +100,7 @@ const actionCards: Card[] = [
     type: 'action',
     name: 'Stand Up / Sit Down',
     description: 'Stand up (if sitting) or sit down (if standing)',
-    icon: '🧍/🪑',
+    // icon removed per request
     count: 3,
   },
   {

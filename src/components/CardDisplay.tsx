@@ -13,7 +13,7 @@ export default function CardDisplay({ card }: CardDisplayProps) {
       <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full">
         {/* Kart Başlığı */}
         <div className="text-center mb-6">
-          {card.type === 'action' && (
+          {card.type === 'action' && card.icon && card.icon.trim().length > 0 && (
             <div className="text-6xl mb-3">
               {card.icon && card.icon.trim().startsWith('<i') ? (
                 <span dangerouslySetInnerHTML={{ __html: card.icon }} />
