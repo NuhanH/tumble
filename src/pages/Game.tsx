@@ -11,11 +11,16 @@ export default function Game() {
   const [gameFinished, setGameFinished] = useState(false);
   const [playerCount, setPlayerCount] = useState<number | null>(null);
   const [startingPlayer, setStartingPlayer] = useState<number | null>(null);
+  const [hasStarted, setHasStarted] = useState(false);
 
   const handleDrawCard = () => {
     if (deck.remaining === 0) {
       setGameFinished(true);
       return;
+    }
+
+    if (!hasStarted) {
+      setHasStarted(true);
     }
 
     setIsDrawing(true);
@@ -40,12 +45,14 @@ export default function Game() {
     setGameFinished(false);
     setPlayerCount(null);
     setStartingPlayer(null);
+    setHasStarted(false);
   };
 
   const handleSelectPlayers = (count: number) => {
     setPlayerCount(count);
     const start = Math.floor(Math.random() * count) + 1;
     setStartingPlayer(start);
+    setHasStarted(false);
   };
 
   return (
@@ -89,7 +96,7 @@ export default function Game() {
           )}
 
           {/* Starting player note (shown before first draw) */}
-          {playerCount !== null && startingPlayer !== null && !currentCard && !gameFinished && (
+          {playerCount !== null && startingPlayer !== null && !hasStarted && !gameFinished && (
             <div className="text-center">
               <div className="inline-block bg-white/20 backdrop-blur rounded-full px-6 py-2">
                 <span className="text-white font-semibold">
