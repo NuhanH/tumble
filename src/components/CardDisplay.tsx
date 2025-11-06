@@ -22,14 +22,10 @@ export default function CardDisplay({ card }: CardDisplayProps) {
               )}
             </div>
           )}
-          <h2 className="text-3xl font-bold text-gray-800">{card.name}</h2>
+          <h2 className="text-3xl font-extrabold">{card.name}</h2>
           <span
             className={`
-              inline-block mt-2 px-4 py-1 rounded-full text-sm font-semibold
-              ${card.type === 'shape' 
-                ? 'bg-blue-100 text-blue-700' 
-                : 'bg-pink-100 text-pink-700'
-              }
+              inline-block mt-2 px-4 py-1 rounded-full text-sm font-extrabold theme-badge
             `}
           >
             {card.type === 'shape' ? '🔷 Block Card' : '⚡ Action Card'}
@@ -87,8 +83,8 @@ function ActionDisplay({ description, showTimer }: { description: string; showTi
 
   return (
     <div className="py-6">
-      <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl p-6 border-2 border-pink-200">
-        <p className="text-xl text-gray-800 text-center font-medium mb-4">
+      <div className="bg-white rounded-2xl p-6 border-2 theme-border shadow-sm">
+        <p className="text-xl text-center font-extrabold mb-4">
           {description}
         </p>
         
@@ -96,7 +92,7 @@ function ActionDisplay({ description, showTimer }: { description: string; showTi
           <div className="mt-6 space-y-4">
             {/* Timer Display */}
             <div className="text-center">
-              <div className={`text-7xl font-bold ${timeLeft <= 3 && isRunning ? 'text-red-500 animate-pulse' : 'text-purple-600'}`}>
+              <div className={`text-7xl font-extrabold ${timeLeft <= 3 && isRunning ? 'text-red-500 animate-pulse' : ''}`}>
                 {timeLeft}
               </div>
               <p className="text-sm text-gray-600 mt-2">seconds</p>
@@ -107,7 +103,7 @@ function ActionDisplay({ description, showTimer }: { description: string; showTi
               {!isRunning || timeLeft === 0 ? (
                 <button
                   onClick={startTimer}
-                  className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-full transition-colors shadow-lg"
+                  className="bg-[var(--primary)] hover:opacity-90 text-white font-extrabold py-2 px-6 rounded-full transition-colors shadow-lg"
                 >
                   ▶️ Start
                 </button>
@@ -116,7 +112,7 @@ function ActionDisplay({ description, showTimer }: { description: string; showTi
               {isRunning && timeLeft > 0 && (
                 <button
                   onClick={resetTimer}
-                  className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-6 rounded-full transition-colors shadow-lg"
+                  className="bg-gray-500 hover:bg-gray-600 text-white font-extrabold py-2 px-6 rounded-full transition-colors shadow-lg"
                 >
                   🔄 Reset
                 </button>
@@ -124,7 +120,7 @@ function ActionDisplay({ description, showTimer }: { description: string; showTi
             </div>
             
             {timeLeft === 0 && (
-              <div className="text-center text-green-600 font-bold text-xl animate-pulse">
+              <div className="text-center text-green-600 font-extrabold text-xl animate-pulse">
                 ✅ Done!
               </div>
             )}

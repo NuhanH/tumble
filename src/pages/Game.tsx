@@ -58,15 +58,18 @@ export default function Game() {
   return (
     <div className="min-h-screen gradient-bg flex flex-col">
       {/* Header */}
-      <header className="bg-white/10 backdrop-blur-md border-b border-white/20">
+      <header className="bg-transparent border-b theme-border">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <button
             onClick={() => navigate('/')}
-            className="text-white/90 hover:text-white flex items-center gap-2 transition-colors"
+            className="opacity-80 hover:opacity-100 flex items-center gap-2 transition-colors"
           >
             ← Home
           </button>
-          <h1 className="text-2xl font-bold text-white">🎮 TUMBLE</h1>
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="TUMBLE" className="h-8" />
+            <h1 className="text-2xl font-extrabold">TUMBLE</h1>
+          </div>
           <div className="w-24"></div> {/* Spacer */}
         </div>
       </header>
@@ -136,10 +139,8 @@ export default function Game() {
             <>
               {/* Kalan Kart Sayısı */}
               <div className="text-center">
-                <div className="inline-block bg-white/20 backdrop-blur rounded-full px-6 py-2">
-                  <span className="text-white font-semibold">
-                    📊 Cards Remaining: {deck.remaining}
-                  </span>
+                <div className="inline-block bg-white rounded-full px-6 py-2 border theme-border shadow-sm">
+                  <span className="font-extrabold">📊 Cards Remaining: {deck.remaining}</span>
                 </div>
               </div>
 
@@ -148,7 +149,7 @@ export default function Game() {
                 {currentCard ? (
                   <CardDisplay card={currentCard} />
                 ) : (
-                  <div className="text-center text-white/80">
+                  <div className="text-center opacity-80">
                     <div className="text-6xl mb-4">🎴</div>
                     <p className="text-xl">Click the button to draw a card</p>
                   </div>
@@ -161,7 +162,7 @@ export default function Game() {
                   onClick={handleDrawCard}
                   disabled={isDrawing || deck.remaining === 0 || playerCount === null}
                   className={`
-                    bg-white text-purple-600 font-bold text-xl py-6 px-12 rounded-full 
+                    bg-[var(--primary)] text-white font-extrabold text-xl py-6 px-12 rounded-full 
                     shadow-2xl transform transition-all duration-300
                     ${isDrawing || deck.remaining === 0 || playerCount === null
                       ? 'opacity-50 cursor-not-allowed scale-95' 
@@ -175,7 +176,7 @@ export default function Game() {
 
               {/* Info */}
               {currentCard && deck.remaining > 0 && (
-                <div className="text-center text-white/70 text-sm fade-in">
+                <div className="text-center opacity-70 text-sm fade-in">
                   <p>Draw again for the next card</p>
                 </div>
               )}

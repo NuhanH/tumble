@@ -9,20 +9,17 @@ export default function Landing() {
       <div className="max-w-2xl w-full text-center fade-in">
         {/* Logo/Title */}
         <div className="mb-8">
-          <h1 className="text-6xl font-bold text-white mb-2">
-            🎮 TUMBLE
-          </h1>
-          <p className="text-xl text-white/90">
-            Get Ready to TUMBLE
-          </p>
+          <img src="/logo.png" alt="TUMBLE" className="h-16 mx-auto mb-3" />
+          <h1 className="text-6xl font-extrabold theme-text mb-1">TUMBLE</h1>
+          <p className="text-xl opacity-80">Get Ready to TUMBLE</p>
         </div>
 
         {/* Instructions Card */}
-        <div className="bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8 border theme-border">
+          <h2 className="text-2xl font-extrabold mb-4">
             How to Play?
           </h2>
-          <div className="text-left space-y-3 text-gray-700">
+          <div className="text-left space-y-3">
             <div className="flex items-start gap-3">
               <span className="text-2xl">1️⃣</span>
               <p>Each player holds a platform in their hand</p>
@@ -49,15 +46,13 @@ export default function Landing() {
         {/* Start Game Button */}
         <button
           onClick={() => navigate('/game')}
-          className="pulse-animation bg-white text-purple-600 font-bold text-2xl py-6 px-12 rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+          className="pulse-animation bg-[var(--primary)] text-white font-extrabold text-2xl py-6 px-12 rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
         >
           🎯 Start Game
         </button>
 
         {/* Footer Info */}
-        <p className="mt-8 text-white/70 text-sm">
-          Click the button to draw cards
-        </p>
+        <p className="mt-8 opacity-70 text-sm">Click the button to draw cards</p>
       </div>
     </div>
   );
