@@ -153,7 +153,31 @@ function shuffleDeck(deck: Card[]): Card[] {
 
 // Yeni deste oluştur
 export function initializeDeck(): CardDeck {
-  const cards = shuffleDeck(createDeck());
+  // Expand shape and action cards separately
+  const expand = (list: Card[]): Card[] => {
+    const out: Card[] = [];
+    list.forEach((card) => {
+      const count = card.count || 1;
+      for (let i = 0; i < count; i++) {
+        out.push({ ...card });
+      }
+    });
+    return out;
+  };
+
+  const expandedShapes = expand(shapeCards);
+  const expandedActions = expand(actionCards);
+
+  // Shuffle shapes and take the first 6 to guarantee opening block cards
+  const shuffledShapes = shuffleDeck(expandedShapes);
+  const firstSixShapes = shuffledShapes.slice(0, 6);
+  const remainingShapes = shuffledShapes.slice(6);
+
+  // Shuffle the rest (remaining shapes + all actions)
+  const rest = shuffleDeck([...remainingShapes, ...expandedActions]);
+
+  const cards = [...firstSixShapes, ...rest];
+
   return {
     cards,
     remaining: cards.length,
