@@ -66,9 +66,8 @@ export default function Game() {
           >
             ← Home
           </button>
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="TUMBLE" className="h-8" />
-            <h1 className="text-2xl font-extrabold">TUMBLE</h1>
+          <div className="flex items-center">
+            <img src="/logo.png" alt="TUMBLE logo" className="h-8" />
           </div>
           <div className="w-24"></div> {/* Spacer */}
         </div>
@@ -102,9 +101,7 @@ export default function Game() {
           {playerCount !== null && startingPlayer !== null && !hasStarted && !gameFinished && (
             <div className="text-center">
               <div className="inline-block bg-white/20 backdrop-blur rounded-full px-6 py-2">
-                <span className="text-white font-semibold">
-                  🚀 Starting Player: Player {startingPlayer}
-                </span>
+                  <span className="text-white font-semibold">Starting Player: Player {startingPlayer}</span>
               </div>
             </div>
           )}

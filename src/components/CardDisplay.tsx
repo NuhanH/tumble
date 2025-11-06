@@ -47,12 +47,23 @@ export default function CardDisplay({ card }: CardDisplayProps) {
 function ShapeDisplay({ image, name }: { image: string; name: string }) {
   return (
     <div className="flex justify-center items-center py-6">
-      <img
-        src={image}
-        alt={name}
-        className="max-w-xs w-full h-auto rounded-2xl shadow-xl"
-        style={{ maxHeight: '300px', objectFit: 'contain' }}
-      />
+      <div
+        className="relative max-w-xs w-full rounded-2xl shadow-xl overflow-hidden"
+        style={{ maxHeight: '300px' }}
+      >
+        <img
+          src={image}
+          alt={name}
+          className="w-full h-auto"
+          style={{
+            maxHeight: '300px',
+            objectFit: 'cover',
+            transform: 'scale(1.2)',
+            transformOrigin: 'center',
+            display: 'block',
+          }}
+        />
+      </div>
     </div>
   );
 }
