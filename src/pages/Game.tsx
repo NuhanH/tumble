@@ -88,7 +88,7 @@ export default function Game() {
                     <button
                       key={n}
                       onClick={() => handleSelectPlayers(n)}
-                      className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-xl py-3 px-6 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                      className="bg-[var(--primary)] text-white font-extrabold text-xl py-3 px-6 rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl focus:outline-none focus:ring-4 focus:ring-[color-mix(in_oklab,_var(--primary)_30%,_white)]"
                     >
                       {n} Players
                     </button>
@@ -120,7 +120,7 @@ export default function Game() {
                 <div className="space-y-4">
                   <button
                     onClick={handleRestart}
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-xl py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                    className="bg-[var(--primary)] text-white font-extrabold text-xl py-4 px-10 rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl focus:outline-none focus:ring-4 focus:ring-[color-mix(in_oklab,_var(--primary)_30%,_white)]"
                   >
                     🔄 New Game
                   </button>
