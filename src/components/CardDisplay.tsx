@@ -60,7 +60,7 @@ function ShapeDisplay({ image, name }: { image: string; name: string }) {
             objectFit: 'cover',
             transform: 'scale(2.0)',
             transformOrigin: 'center',
-            objectPosition: '1% 50%',
+            objectPosition: '-5% 50%',
             display: 'block',
           }}
         />
