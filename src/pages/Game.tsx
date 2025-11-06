@@ -19,6 +19,11 @@ export default function Game() {
       return;
     }
 
+    // Hide starting player banner as soon as the first draw begins
+    if (!hasStarted) {
+      setHasStarted(true);
+    }
+
     setIsDrawing(true);
     setCurrentCard(null);
 
@@ -28,11 +33,6 @@ export default function Game() {
       setCurrentCard(card);
       setDeck(newDeck);
       setIsDrawing(false);
-
-      // Mark game as started AFTER the first card is revealed
-      if (!hasStarted) {
-        setHasStarted(true);
-      }
 
       if (newDeck.remaining === 0) {
         setTimeout(() => setGameFinished(true), 2000);
@@ -98,8 +98,8 @@ export default function Game() {
             </div>
           )}
 
-          {/* Starting player note: visible ONLY during the first draw animation */}
-          {playerCount !== null && startingPlayer !== null && isDrawing && !hasStarted && !gameFinished && (
+          {/* Starting player note: visible after selection until first draw starts */}
+          {playerCount !== null && startingPlayer !== null && !hasStarted && !gameFinished && (
             <div className="text-center">
               <div className="inline-block bg-white/20 backdrop-blur rounded-full px-6 py-2">
                   <span className="text-white font-semibold">Starting Player: Player {startingPlayer}</span>
