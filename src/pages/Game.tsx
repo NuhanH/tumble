@@ -167,7 +167,7 @@ export default function Game() {
                     }
                   `}
                 >
-                  {isDrawing ? '⏳ Drawing...' : '🎲 Draw Card'}
+                  {isDrawing ? '⏳ Drawing...' : 'Draw Card'}
                 </button>
               </div>
 
