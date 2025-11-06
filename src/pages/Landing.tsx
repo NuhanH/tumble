@@ -7,11 +7,9 @@ export default function Landing() {
   return (
     <div className="min-h-screen gradient-bg flex items-center justify-center p-6">
       <div className="max-w-2xl w-full text-center fade-in">
-        {/* Logo/Title */}
+        {/* Logo only */}
         <div className="mb-8">
-          <img src="/logo.png" alt="TUMBLE" className="h-16 mx-auto mb-3" />
-          <h1 className="text-6xl font-extrabold theme-text mb-1">TUMBLE</h1>
-          <p className="text-xl opacity-80">Get Ready to TUMBLE</p>
+          <img src="/logo.png" alt="TUMBLE" className="h-16 mx-auto" />
         </div>
 
         {/* Instructions Card */}
