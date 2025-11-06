@@ -101,8 +101,8 @@ export default function Game() {
           {/* Starting player note: visible after selection until first draw starts */}
           {playerCount !== null && startingPlayer !== null && !hasStarted && !gameFinished && (
             <div className="text-center">
-              <div className="inline-block bg-white/20 backdrop-blur rounded-full px-6 py-2">
-                  <span className="text-white font-semibold">Starting Player: Player {startingPlayer}</span>
+              <div className="inline-block bg-white rounded-full px-6 py-2 border theme-border shadow-sm">
+                  <span className="font-extrabold theme-text">Starting Player: Player {startingPlayer}</span>
               </div>
             </div>
           )}
