@@ -58,8 +58,9 @@ function ShapeDisplay({ image, name }: { image: string; name: string }) {
           style={{
             maxHeight: '300px',
             objectFit: 'cover',
-            transform: 'scale(1.2)',
+            transform: 'scale(2.0)',
             transformOrigin: 'center',
+            objectPosition: '50% 50%',
             display: 'block',
           }}
         />

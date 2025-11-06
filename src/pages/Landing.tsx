@@ -46,7 +46,7 @@ export default function Landing() {
           onClick={() => navigate('/game')}
           className="pulse-animation bg-[var(--primary)] text-white font-extrabold text-2xl py-6 px-12 rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
         >
-          🎯 Start Game
+           Start Game
         </button>
 
         {/* Footer Info */}

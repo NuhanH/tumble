@@ -74,7 +74,7 @@ export default function Game() {
       </header>
 
       {/* Ana Oyun Alanı */}
-      <main className="flex-1 flex flex-col items-center justify-center p-6">
+  <main className="flex-1 flex flex-col items-center justify-center p-6 pb-[calc(40px+env(safe-area-inset-bottom))]">
         <div className="max-w-2xl w-full space-y-8">
           {/* Player selection overlay */}
           {playerCount === null && !gameFinished && (
@@ -154,7 +154,7 @@ export default function Game() {
               </div>
 
               {/* Kart Çekme Butonu */}
-              <div className="text-center">
+              <div className="text-center mb-[calc(16px+env(safe-area-inset-bottom))]">
                 <button
                   onClick={handleDrawCard}
                   disabled={isDrawing || deck.remaining === 0 || playerCount === null}
